@@ -1,3 +1,5 @@
 import './index.css';
-import './components/ResultsComponent/resultsComponent.css';
-import './components/HomeComponent/homeComponent.css';
+import './components/Results/results.css';
+import './components/Home/home.css';
+import './components/NavBar/navbar.css';
+import './components/Footer/footer.css';

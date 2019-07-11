@@ -1,10 +1,18 @@
 import React from 'react';
-import HomeComponent from '../../components/HomeComponent';
+import Container from 'react-bootstrap/Container'
 
-const Home =  () => (
+import Home from '../../components/Home';
+import NavBar from '../../components/NavBar';
+import Footer from '../../components/Footer';
+
+const HomePage =  () => (
   <div>
-    <HomeComponent />
+   <Container>
+      <NavBar />
+      <Home />
+      <Footer />
+   </Container>
   </div>
 );
 
-export default Home;
+export default HomePage;

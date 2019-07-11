@@ -1,11 +1,18 @@
 import React from 'react';
-import ResultsComponent from '../../components/ResultsComponent';
+import Container from 'react-bootstrap/Container'
 
+import Results from '../../components/Results';
+import NavBar from '../../components/NavBar';
+import Footer from '../../components/Footer';
 
-const Results =  () => (
+const ResultsPage =  () => (
   <div>
-    <ResultsComponent />
+    <Container>
+      <NavBar />
+      <Results />
+      <Footer />
+    </Container>
   </div>
 );
 
-export default Results;
+export default ResultsPage;

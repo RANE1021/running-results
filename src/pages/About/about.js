@@ -1,11 +1,18 @@
 import React from 'react';
-import AboutComponent from '../../components/AboutComponent';
+import Container from 'react-bootstrap/Container'
 
+import About from '../../components/About';
+import NavBar from '../../components/NavBar';
+import Footer from '../../components/Footer';
 
-const About =  () => (
+const AboutPage =  () => (
   <div>
-    <AboutComponent />
+    <Container>
+      <NavBar />
+      <About />
+      <Footer />
+    </Container>
   </div>
 );
 
-export default About;
+export default AboutPage;

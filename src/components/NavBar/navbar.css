@@ -1,0 +1,13 @@
+.navbar-title{
+  color: lightcoral !important;
+  font-family: 'DM Serif Display', serif;
+  font-size: 56px;
+  padding-left:  22px;
+}
+
+.navbar-link-styling{
+  color:navy;
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px;
+  padding-right: 22px;
+}
