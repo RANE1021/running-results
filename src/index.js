@@ -7,18 +7,22 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'mobx-react';
 
 import './styles';
 import App from './App';
 import Routes from './routes';
 import * as serviceWorker from './serviceWorker';
+import { masterStore } from './stores/master.store';
 
 ReactDOM.render(
-  <Router>
-    <Routes>
-      <App />
-    </Routes>
-  </Router>,
+  <Provider store={masterStore}>
+    <Router>
+      <Routes>
+        <App />
+      </Routes>
+    </Router>
+  </Provider>,
 document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

@@ -1,15 +1,24 @@
 import React from 'react';
-import Container from 'react-bootstrap/Container'
+import { Container, Row, Col } from 'react-bootstrap'
 
-import About from '../../components/About';
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
+import About from '../../components/About';
+import Image from '../../components/Image'
+
 
 const AboutPage =  () => (
   <div>
     <Container>
       <NavBar />
-      <About />
+      <Row>
+        <Col>
+        <Image />
+        </Col>
+        <Col>
+        <About />
+        </Col>
+      </Row>
       <Footer />
     </Container>
   </div>

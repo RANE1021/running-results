@@ -9,11 +9,11 @@ import * as paths from './path';
 export default () => {
   return (
     <Switch>
-      <div>
+      <>
         <Route exact path="/" component={Home} />
         <Route path={paths.about} component={About} />
         <Route path={paths.results} component={Results} />
-      </div>
+      </>
     </Switch>
   );
 }
