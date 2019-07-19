@@ -4,13 +4,8 @@ import Table from 'react-bootstrap/Table';
 
 import Modal from '../Modal'
 
-// suyashsharma06
-var ResultsComponent = inject("store")(
-  observer(
-    class ResultsComponent extends React.Component {
-      render() {
+const ResultsComponent = ({store}) => {
         return (
-          console.log('Store value', this.props.store.resultsStore.test.name),
           <div>
             <Table responsive="md" className="table-styling">
               <thead>
@@ -26,28 +21,28 @@ var ResultsComponent = inject("store")(
               <tbody>
                 <tr>
                   <td>1</td>
-                  <td>07-15-2018</td>
-                  <td>5 kilometers</td>
-                  <td>8:53</td>
-                  <td>27:34</td>
+                  <th>{store.resultsStore.test1.date}</th>
+                  <th>{store.resultsStore.test1.distance}</th>
+                  <th>{store.resultsStore.test1.pace}</th>
+                  <th>{store.resultsStore.test1.time}</th>
                   <td><Modal /></td>
                 </tr>
                 <tr>
                   <td>2</td>
-                  <td>06-24-2018</td>
-                  <td>4 miles</td>
-                  <td>8:53</td>
-                  <td>35:31</td>
+                  <th>{store.resultsStore.test2.date}</th>
+                  <th>{store.resultsStore.test2.distance}</th>
+                  <th>{store.resultsStore.test2.pace}</th>
+                  <th>{store.resultsStore.test2.time}</th>
                   <td>
                     <Modal />
                   </td>
                 </tr>
                 <tr>
                   <td>3</td>
-                  <td>04-08-2018</td>
-                  <td>4 miles</td>
-                  <td>9:13</td>
-                  <td>36:49</td>
+                  <th>{store.resultsStore.test3.date}</th>
+                  <th>{store.resultsStore.test3.distance}</th>
+                  <th>{store.resultsStore.test3.pace}</th>
+                  <th>{store.resultsStore.test3.time}</th>
                   <td>
                     <Modal />
                   </td>
@@ -57,9 +52,6 @@ var ResultsComponent = inject("store")(
           </div>
         )
       }
-    }
-  )
-)
 
 
-export default ResultsComponent;
+export default inject('store')(observer(ResultsComponent));
