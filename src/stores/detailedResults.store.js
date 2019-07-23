@@ -1,8 +1,20 @@
-import { observable } from 'mobx';
+import { observable, action } from 'mobx';
 
 class DetailedResultsStore {
 
-  test1 = observable({
+  @observable modalState = {
+    show: false
+  }
+
+  @action close() {
+    this.modalState.show = false;
+  }
+
+  @action open() {
+    this.modalState.show = true;
+  }
+
+  @observable test1 = {
     runnerId: "18093068",
     bib: "31789",
     eventCode: "18GOAL",
@@ -12,9 +24,9 @@ class DetailedResultsStore {
     startDateTime: "2018-07-15T12:00:00",
     actualTime: "0:27:34",
     actualPace: "08:53"
-  })
+  }
 
-  test2 = observable({
+  @observable test2 = {
     runnerId: "17772813",
     bib: "647",
     eventCode: "AHP18",
@@ -24,9 +36,9 @@ class DetailedResultsStore {
     startDateTime: "2018-06-24T09:00:00",
     actualTime: "0:35:31",
     actualPace: "08:53"
-  })
+  }
 
-  test3 = observable({
+  @observable test3 = {
     runnerId: "15691082",
     bib: "2862",
     eventCode: "3381",
@@ -36,7 +48,7 @@ class DetailedResultsStore {
     startDateTime: "2018-04-08T09:00:00",
     actualTime: "0:36:49",
     actualPace: "09:13"
-  })
+  }
 }
 
 export const detailedResultsStore = new DetailedResultsStore();

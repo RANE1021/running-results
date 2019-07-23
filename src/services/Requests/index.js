@@ -1,1 +1,1 @@
-export { default } from './post';
+export { getRunningResults } from './post'

@@ -53,5 +53,4 @@ const ResultsComponent = ({store}) => {
         )
       }
 
-
 export default inject('store')(observer(ResultsComponent));

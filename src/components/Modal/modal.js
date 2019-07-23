@@ -1,43 +1,35 @@
 import React from 'react';
-// import  { observable } from 'mobx'
-// import { action } from 'mobx-react';
-
+import { inject, observer } from 'mobx-react';
 import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal'
+import Modal from 'react-bootstrap/Modal';
 
-class ResultsComponent extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      show: false
-    };
-  }
-
-  close() {
-    this.setState({ show: false });
-  }
-
-  open() {
-    this.setState({ show: true });
-  }
-
-
-  render () {
-    return (
-      <div onClick={e => e.stopPropagation()}>
-        <Button variant="secondary" onClick={() => this.open()}>
-          ...
-      </Button>
-        <Modal show={this.state.show} onHide={()=> this.close()}>
-          <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-          <Modal.Footer/>
-        </Modal>
-      </div>
-    )
-  }
+const ResultsComponent = ({store}) => {
+  return (
+    <div onClick={e => e.stopPropagation()}>
+      <Button variant="secondary" onClick={() => store.detailedResultsStore.open()}>
+        details
+    </Button>
+      <Modal show={store.detailedResultsStore.modalState.show} onHide={() => store.detailedResultsStore.close()}>
+        <Modal.Header closeButton>
+          <Modal.Title>{store.detailedResultsStore.test1.eventName}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+            Sample text goes here, iteration of store object.
+        </Modal.Body>
+        <Modal.Footer/>
+      </Modal>
+    </div>
+  )
 }
 
-export default ResultsComponent;
+export default inject('store')(observer(ResultsComponent));
+
+// runnerId:
+// bib:
+// eventCode:
+// eventName:
+// venue:
+// distanceName:
+// startDateTime:
+// actualTime:
+// actualPace:
