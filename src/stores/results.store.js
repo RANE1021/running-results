@@ -1,4 +1,5 @@
-import { observable } from 'mobx';
+import { observable, action } from 'mobx';
+import axios from 'axios';
 
 class ResultsStore {
 
@@ -24,6 +25,20 @@ class ResultsStore {
     pace: "9:13",
     time: "36:49"
   }
+
+  @observable @action runnersApi = async () => {
+    let url = "http://localhost:3001/api/runners";
+    let runnerResponse = {};
+    await axios.get(url)
+    .then(async function(response) {
+    runnerResponse = await response;
+    console.log(response);
+    })
+    .catch(function (error) {
+    console.log(error);
+    })
+    this.results = await runnerResponse;
+    }
 }
 
 export const resultsStore = new ResultsStore();
