@@ -3,31 +3,28 @@ import axios from 'axios';
 
 class ResultsStore {
 
-  @observable results =  {};
+  @observable myRaceResults =  {};
+  @observable runnerSearchResults = {};
+  @observable runnerRaceResults = {};
 
-  @observable test1 = {
-    date: "07 - 15 - 2018",
-    distance:  "5k",
-    pace: "8:53",
-    time: "27:34"
+  @observable user = {
+    fullName: null,
+    birthDate: null,
+    runnerId: null
+  };
+
+  @action updateUser(key, value) {
+    this.user[key] = value
   }
 
-  @observable test2 = {
-    date: "06 - 24 - 2018",
-    distance: "4m",
-    pace: "8:53",
-    time: "35:31"
+  @action updateDate(date) {
+    this.user.birthDate = date._i;
   }
 
-  @observable test3 = {
-    date: "04-08-2018",
-    distance: "4m",
-    pace: "9:13",
-    time: "36:49"
-  }
+  domain = "http://localhost:3001/api/";
 
-  @observable @action runnersApi = async () => {
-    let url = "http://localhost:3001/api/runners";
+  @observable @action myRacesApi = async () => {
+    let url = "http://localhost:3001/api/races/me";
     let runnerResponse = {};
     await axios.get(url)
     .then(async function(response) {
@@ -37,8 +34,42 @@ class ResultsStore {
     .catch(function (error) {
     console.log(error);
     })
-    this.results = await runnerResponse;
+    this.myRaceResults = await runnerResponse;
     }
+
+    @observable @action runnersSearchApi = async () => {
+    let url = "http://localhost:3001/api/runners/search";
+    let postBody = {
+      fullName:this.user.fullName
+    }
+    let runnerResponse = {};
+    await axios.post(url, postBody)
+      .then(async function (response) {
+        runnerResponse = await response;
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+    this.runnerSearchResults = await runnerResponse.data.response.items;
+  }
+
+  @observable @action racesApi = async () => {
+    let url = "http://localhost:3001/api/runners/races";
+    let postBody = {
+      runnerId: this.user.runnerId
+    }
+    let runnerResponse = {};
+    await axios.get(url, postBody)
+      .then(async function (response) {
+        runnerResponse = await response;
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+    this.runnerRaceResults = await runnerResponse.data.response.items;
+  }
 }
 
 export const resultsStore = new ResultsStore();

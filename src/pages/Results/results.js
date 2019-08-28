@@ -1,20 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Container from 'react-bootstrap/Container'
+import { inject, observer } from 'mobx-react';
 
-import Results from '../../components/Results';
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
 import UpdateButton from '../../components/UpdateButton'
+import UserForm from '../../components/UserForm'
 
-const ResultsPage =  () => (
-  <div>
-    <Container>
-      <NavBar />
-      <Results />
-      <UpdateButton />
-      <Footer />
-    </Container>
-  </div>
-);
+@inject('store')
+@observer
+class ResultsPage extends Component {
+  componentDidMount() {
+    this.searchRaces();
+  }
+
+  searchRaces() {
+    this.props.store.resultsStore.racesApi()
+  }
+
+  render () {
+    return (
+      <div>
+        <Container className="container-styles">
+          <NavBar />
+          <UserForm />
+          <UpdateButton />
+          <Footer />
+        </Container>
+      </div>
+    )
+  }
+};
 
 export default ResultsPage;

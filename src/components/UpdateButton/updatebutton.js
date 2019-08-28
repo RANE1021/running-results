@@ -5,10 +5,14 @@ import { Button } from 'react-bootstrap';
 @inject('store')
 @observer
 class UpdateButton extends Component {
+  searchRunners() {
+    this.props.store.resultsStore.runnersSearchApi()
+  }
+
   render () {
     return(
       <div>
-        <Button variant="secondary" onClick={() => this.props.store.resultsStore.runnersApi()}>
+        <Button variant="secondary" onClick={ () => this.searchRunners() }>
           UpdateRunner
         </Button>
       </div>
