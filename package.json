@@ -51,7 +51,7 @@
     "mobx-react": "^6.1.1",
     "mobx-react-form": "^2.0.4",
     "mobx-react-lite": "^1.4.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "pnp-webpack-plugin": "1.2.1",
     "popper.js": "^1.15.0",
