@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
-// import DatePicker from 'react-datepicker';
 import * as DateTime from 'react-datetime';
-
-// import "react-datepicker/dist/react-datepicker.css";
-
-import InputField from '../InputField'
+import InputField from '../InputField';
 
 @inject('store')
 @observer
@@ -26,7 +22,6 @@ class UserForm extends Component {
 
   render() {
     let birthDate = this.props.store.resultsStore.user.birthDate;
-
     return (
       <div>
         <h2>Search NYRR Results</h2>

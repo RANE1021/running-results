@@ -33,7 +33,7 @@ async function getRunnersByName(user) {
   const options = {
     headers: {
       "Content-type": "application/json",
-      token: "6112c32703f442f0"
+      token: "898d6b6aef0e4887"
     },
     method: "POST",
     uri: "https://results.nyrr.org/api/runners/search",
@@ -61,7 +61,7 @@ async function getRaces(runnerId) {
   const options = {
     headers: {
       "Content-type": "application/json",
-      token: "6112c32703f442f0"
+      token: "898d6b6aef0e4887"
     },
     method: "POST",
     uri: "https://results.nyrr.org/api/runners/races",

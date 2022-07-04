@@ -21,7 +21,11 @@ class ResultsStore {
     this.user.birthDate = date._i;
   }
 
-  domain = "http://localhost:3001/api/";
+  @action updateRunnerId(key, value) {
+    this.user.runnerId = value
+  }
+
+  // domain = "http://localhost:3001/api/";
 
   @observable @action myRacesApi = async () => {
     let url = "http://localhost:3001/api/races/me";
@@ -69,6 +73,12 @@ class ResultsStore {
         console.log(error);
       })
     this.runnerRaceResults = await runnerResponse.data.response.items;
+  }
+
+  @observable @action updateRunnerId = async () => {
+    if (this.runnerSearchResults.length > 1) {
+      console.log("Logging greater than 1")
+    }
   }
 }
 
